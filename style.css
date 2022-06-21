@@ -1,0 +1,15 @@
+body {
+    width: 300px;
+    height: 300px;
+}
+
+button {
+    background-color: white;
+    color: black;
+    height: 30px;
+    transition: 0.3s;
+} 
+
+button:hover {
+    border-radius: 10px;
+}

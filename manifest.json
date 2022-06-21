@@ -1,0 +1,25 @@
+{
+    "name": "Testing Assist",
+    "description": "It is going to be lit",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": ["storage", "webNavigation", "scripting"],
+    "host_permissions": ["https://*/*"],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*/*"
+            ],
+            "js": [
+                "finder.js", "simulater.js"
+            ]
+        }
+    ]
+  }
