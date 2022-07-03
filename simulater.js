@@ -21,8 +21,7 @@ function applyMatrix(rgb_list, matrix) {
 
 
 
-
-const changeColor = async () =>  {
+function changeColor() {
      
    
     // import deuter from "./conversion.js"
@@ -37,14 +36,21 @@ const changeColor = async () =>  {
             B: [0,   30,   70]
         }
 
+
+        const blacker = {
+            R:[0, 0,  0],
+            G:[0,   0, 0],
+            B: [0,   0, 0]
+        }
+
+        const applied_matrix = blacker;
+
         for (var ti = 0; ti < target_keys.length; ti += 1) {
             const target = items.map[target_keys[ti]]
             
             const rgb = findRGB(target_keys[ti])
 
-            
-
-            const nrgb = applyMatrix(rgb, deuter)
+            const nrgb = applyMatrix(rgb, applied_matrix)
 
             console.log(rgb, "vs", nrgb)
             const elements = document.getElementsByClassName(target)
@@ -60,6 +66,8 @@ const changeColor = async () =>  {
 
     })
 
+    console.log("done")
+
 }
 
 
@@ -74,6 +82,9 @@ chrome.runtime.sendMessage({msg: "status"}, async function (response) {
     console.log(response)
     if (response.data.status == "simulater-start") {
         console.log("Simulater trigger: On")
+        changeColor()
+        chrome.storage.local.set({"status": "simulater-end"})
+        
     }
     else {
         console.log("Simulater trigger: Off")
