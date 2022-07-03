@@ -14,7 +14,11 @@ function grabAllColors() {
             binder[element_color] = "bind_" + count
             count += 1
         }
-        elements[i].className += " " + binder[element_color]
+
+        if (! elements[i].classList.contains(binder[element_color])) {
+            elements[i].className += " " + binder[element_color]
+        }
+
     }
 
     chrome.storage.local.set({"map": binder})
