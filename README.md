@@ -1,2 +1,2 @@
-# color-assist
-Google Chrome extension for visualizing colors in varieties of color blindness. 
+# Color Assist
+Google Chrome extension for visualizing webpage colors in varieties of color blindness. 
