@@ -13,3 +13,14 @@ button {
 button:hover {
     border-radius: 10px;
 }
+
+
+.padding-def {
+    padding-top: 20px;
+}
+
+.center {
+    margin: auto;
+    width: 100px;
+    display: block;
+}
