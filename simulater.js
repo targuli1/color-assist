@@ -65,12 +65,23 @@ function changeColor() {
         }
 
     })
-
-    console.log("done")
-
 }
 
 
+function resetColor() {
+    chrome.storage.local.get("map", (items)=> {
+
+        const target_keys =  Object.keys(items.map)
+        for (var ti = 0; ti < target_keys.length; ti += 1) {
+            const target = items.map[target_keys[ti]]
+            const elements = document.getElementsByClassName(target)
+            for (var i = 0; i < elements.length; i+=1) {
+                elements[i].style.backgroundColor = null
+            }
+        }
+
+    })
+}
 
 
 
@@ -85,6 +96,11 @@ chrome.runtime.sendMessage({msg: "status"}, async function (response) {
         changeColor()
         chrome.storage.local.set({"status": "simulater-end"})
         
+    }
+    else if (response.data.status == "simulater-reset") {
+        console.log("Simulater trigger: On")
+        resetColor()
+        chrome.storage.local.set({"status": "simulater-end"})
     }
     else {
         console.log("Simulater trigger: Off")
