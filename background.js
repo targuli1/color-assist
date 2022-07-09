@@ -32,7 +32,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             )
             
             sendResponse({ data: {} });
-            chrome.storage.local.set({"status": "simulater-start"})
+            //chrome.storage.local.set({"status": "simulater-start"})
         }
 
         else if (request.msg == "status") {
