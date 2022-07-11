@@ -1,3 +1,18 @@
+var _colormap = {
+    "gray": {
+        R: [30, 59, 11],
+        G: [30, 59, 11],
+        B: [30, 59, 11],
+    },
+    "deuter": {
+        R:[62.5, 37.5,  0],
+        G:[70,   30,    0],
+        B: [0,   30,   70]
+    }
+}
+
+ 
+
 function findRGB(colorcode) {
     let data = colorcode.replace("rgb", "")
     data = data.replace("a", "")
@@ -28,41 +43,34 @@ function changeColor() {
 
     chrome.storage.local.get("map", (items)=> {
 
-        const target_keys =  Object.keys(items.map)
+        
+        chrome.storage.local.get("simulation-type", (type) => {
+            const target_keys =  Object.keys(items.map)    
+            console.log("DEBUGGGG: ", type["simulation-type"])
+            let applied_matrix = _colormap[type["simulation-type"]]
+            console.log("last")
 
-        const deuter = {
-            R:[62.5, 37.5,  0],
-            G:[70,   30,    0],
-            B: [0,   30,   70]
-        }
+            for (var ti = 0; ti < target_keys.length; ti += 1) {
+                const target = items.map[target_keys[ti]]
+                
+                const rgb = findRGB(target_keys[ti])
 
+                const nrgb = applyMatrix(rgb, applied_matrix)
 
-        const blacker = {
-            R:[0, 0,  0],
-            G:[0,   0, 0],
-            B: [0,   0, 0]
-        }
-
-        const applied_matrix = blacker;
-
-        for (var ti = 0; ti < target_keys.length; ti += 1) {
-            const target = items.map[target_keys[ti]]
-            
-            const rgb = findRGB(target_keys[ti])
-
-            const nrgb = applyMatrix(rgb, applied_matrix)
-
-            console.log(rgb, "vs", nrgb)
-            const elements = document.getElementsByClassName(target)
-            for (var i = 0; i < elements.length; i+=1) {
-                if (rgb.length == 3) {
-                    elements[i].style.backgroundColor = "rgb(" + nrgb[0] + ", " + nrgb[1] + ", " + nrgb[2] + ")"
-                }
-                else {
-                    elements[i].style.backgroundColor = "rgba(" + nrgb[0] + ", " + nrgb[1] + ", " + nrgb[2] + ", " + rgb[3] + ")"
+                console.log(rgb, "vs", nrgb)
+                const elements = document.getElementsByClassName(target)
+                for (var i = 0; i < elements.length; i+=1) {
+                    if (rgb.length == 3) {
+                        elements[i].style.backgroundColor = "rgb(" + nrgb[0] + ", " + nrgb[1] + ", " + nrgb[2] + ")"
+                    }
+                    else {
+                        elements[i].style.backgroundColor = "rgba(" + nrgb[0] + ", " + nrgb[1] + ", " + nrgb[2] + ", " + rgb[3] + ")"
+                    }
                 }
             }
-        }
+        })
+
+        
 
     })
 }

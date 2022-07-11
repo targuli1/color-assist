@@ -17,10 +17,14 @@ grab_colors_button.addEventListener("click", ()=> {
 
 
 simulate_button.addEventListener("click", ()=> {
+    var simulation = document.getElementById('simulation').value;
+
+
+    
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
         var myTabId = tabs[0].id;
         chrome.storage.local.set({"status": "simulater-start"})
-        console.log("Sending: ", myTabId)
+        chrome.storage.local.set({"simulation-type": simulation})
         chrome.runtime.sendMessage({ msg: "Simulate elements", tabId: myTabId}, (response) => {
             if (response) {
               console.log("Sent response: ", response)
