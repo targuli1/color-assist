@@ -1,6 +1,6 @@
 {
-    "name": "Testing Assist",
-    "description": "It is going to be lit",
+    "name": "Color Assist",
+    "description": "Simulate color blindness within 2 clicks",
     "version": "1.0",
     "manifest_version": 3,
     "background": {
@@ -8,8 +8,16 @@
         "type": "module"
     },
     "action": {
-        "default_popup": "popup.html"
+        "default_popup": "popup.html",
+        "default_icon": {
+            "128": "/images/logo128.png",
+            "500": "/images/logo500.png"
+          }
     },
+    "icons": {
+        "128": "/images/logo128.png",
+        "500": "/images/logo500.png"
+      },
     "permissions": ["storage", "webNavigation", "scripting"],
     "host_permissions": ["https://*/*"],
     "content_scripts": [
