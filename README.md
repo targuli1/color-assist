@@ -12,4 +12,5 @@ Google Chrome extension for visualizing webpage colors in varieties of color bli
 4. At this point, you should be able to use extension
 
 
-
+## Take a closer look
+You can look at more up to date project information in [notion](https://tinted-filament-15e.notion.site/Color-Assist-0b6efce574474e49b2c14b25b2268032)
