@@ -8,7 +8,7 @@
         "type": "module"
     },
     "action": {
-        "default_popup": "popup.html",
+        "default_popup": "popup/popup.html",
         "default_icon": {
             "128": "/images/logo128.png",
             "500": "/images/logo500.png"
@@ -26,7 +26,7 @@
                 "https://*/*"
             ],
             "js": [
-                "finder.js", "simulater.js"
+                "business-logic/finder.js", "business-logic/simulater.js"
             ]
         }
     ]

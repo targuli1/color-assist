@@ -12,7 +12,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             chrome.scripting.executeScript(
                 {
                     target: {tabId: request.tabId},
-                    files: ["finder.js"],
+                    files: ["business-logic/finder.js"],
                 },
                 ()=> {console.log("game over")}
             )
@@ -27,7 +27,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             chrome.scripting.executeScript(
                 {
                     target: {tabId: request.tabId},
-                    files: ["simulater.js"],
+                    files: ["business-logic/simulater.js"],
                 }
             )
             

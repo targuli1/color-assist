@@ -24,3 +24,7 @@ button:hover {
     width: 100px;
     display: block;
 }
+
+.debug {
+    border-color: red 2px;
+ }
