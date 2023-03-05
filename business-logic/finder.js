@@ -1,7 +1,7 @@
 
 
 function grabAllColors() {
-    const elements = document.getElementsByTagName("div") ?? []
+    const elements = document.getElementsByTagName("*") ?? []
     console.log("Total amount of div refs: ", elements.length)
     var colorMap = {}
     var binder = {}

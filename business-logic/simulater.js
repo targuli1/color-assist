@@ -61,10 +61,15 @@ function changeColor() {
                 const elements = document.getElementsByClassName(target)
                 for (var i = 0; i < elements.length; i+=1) {
                     if (rgb.length == 3) {
-                        elements[i].style.backgroundColor = "rgb(" + nrgb[0] + ", " + nrgb[1] + ", " + nrgb[2] + ")"
+                        const color = "rgb(" + nrgb[0] + ", " + nrgb[1] + ", " + nrgb[2] + ")"
+                        elements[i].style.setProperty("background-color", color, "important")
+                        // elements[i].style.backgroundColor = color
                     }
                     else {
-                        elements[i].style.backgroundColor = "rgba(" + nrgb[0] + ", " + nrgb[1] + ", " + nrgb[2] + ", " + rgb[3] + ")"
+                        const color = "rgba(" + nrgb[0] + ", " + nrgb[1] + ", " + nrgb[2] + ", " + rgb[3] + ")"
+                        elements[i].style.setProperty("background-color", color, "important")
+
+                        // elements[i].style.backgroundColor = color
                     }
                 }
             }
@@ -82,9 +87,13 @@ function resetColor() {
         const target_keys =  Object.keys(items.map)
         for (var ti = 0; ti < target_keys.length; ti += 1) {
             const target = items.map[target_keys[ti]]
+            // console.log(, target)
+
             const elements = document.getElementsByClassName(target)
             for (var i = 0; i < elements.length; i+=1) {
-                elements[i].style.backgroundColor = null
+                elements[i].style.setProperty("background-color", target_keys[ti], "important")
+
+                // elements[i].style.backgroundColor = 
             }
         }
 
